@@ -48,13 +48,6 @@ def censor_word(word)
   new_word
 end
 
-# power_of_two?
-# should accept a number as an arg
-# should not use the built-in Math#log methods
-# when the number is a power of two
-#   should return true
-# when the number is not a power of two
-#   should return false (FAILED - 1)
 def power_of_two?(num)
   return false if num < 1
   return true if num == 1
