@@ -4,8 +4,6 @@
 # The method should return a new array where every even number is divided by 2 and every odd
 # number is multipled by 2.
 
-require 'byebug'
-
 def half_and_double(array)
   array.map do |num|
     if num.even?

@@ -3,8 +3,6 @@
 # Write a method, fuzz_buzz, that accepts a number as an arg.
 # The method should return an array of numbers from one to the given number that are not divisible by 3 or 5.
 
-require 'byebug'
-
 def fuzz_buzz(num)
   numbers = []
 

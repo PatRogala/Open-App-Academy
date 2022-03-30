@@ -3,8 +3,6 @@
 # Write a method, many_vowel_words, that accepts a sentence string as an arg.
 # The method should return a new sentence containing only the words that contain two or more vowels.
 
-require 'byebug'
-
 def many_vowel_words(sentence)
   words = sentence.split(' ')
 
