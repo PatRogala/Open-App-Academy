@@ -3,8 +3,8 @@ require_relative 'board'
 
 class Game
   def initialize(player_1_mark, player_2_mark)
-    @player_1_mark = player_1_mark
-    @player_2_mark = player_2_mark
+    @player_1_mark = HumanPlayer.new(player_1_mark)
+    @player_2_mark = HumanPlayer.new(player_2_mark)
     @current_player = @player_1_mark
     @board = Board.new
   end
