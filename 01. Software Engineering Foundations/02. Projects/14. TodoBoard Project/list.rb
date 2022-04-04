@@ -39,15 +39,15 @@ class List
   end
 
   def print
-    puts '-' * 42
-    puts @label.upcase.to_s.center(42)
-    puts '-' * 42
-    puts 'Index | Item                 | Deadline'
-    puts '-' * 42
+    puts '-' * 49
+    puts @label.upcase.to_s.center(49)
+    puts '-' * 49
+    puts 'Index | Item                 | Deadline   | Done'
+    puts '-' * 49
     @items.each_with_index do |item, idx|
-      puts "#{idx.to_s.ljust(5)} | #{item.title.ljust(20)} | #{item.deadline}"
+      puts "#{idx.to_s.ljust(5)} | #{item.title.ljust(20)} | #{item.deadline.ljust(10)} | #{item.done ? '[✓]' : '[ ]'}"
     end
-    puts '-' * 42
+    puts '-' * 49
   end
 
   def print_full_item(index)
@@ -55,10 +55,10 @@ class List
 
     item = self[index]
 
-    puts '-' * 42
-    puts item.title.ljust(32) + item.deadline.to_s
-    puts item.description unless item.description.empty?
-    puts '-' * 42
+    puts '-' * 49
+    puts item.title.ljust(32) + item.deadline.to_s + (item.done ? ' [✓]' : ' [ ]').rjust(7)
+    puts item.description
+    puts '-' * 49
   end
 
   def print_priority
@@ -89,5 +89,23 @@ class List
 
   def sort_by_date!
     @items.sort_by!(&:deadline)
+  end
+
+  def toggle_item(index)
+    return false unless valid_index?(index)
+
+    self[index].toggle
+    true
+  end
+
+  def remove_item(index)
+    return false unless valid_index?(index)
+
+    @items.delete_at(index)
+    true
+  end
+
+  def purge
+    @items.reject!(&:done)
   end
 end

@@ -2,7 +2,7 @@ require 'date'
 
 class Item
   attr_accessor :title, :description
-  attr_reader :deadline
+  attr_reader :deadline, :done
 
   def self.valid_date?(date_string)
     date = date_string.split('-').map(&:to_i)
@@ -13,6 +13,7 @@ class Item
     @title = title
     @deadline = deadline
     @description = description
+    @done = false
     raise 'invalid date' unless Item.valid_date?(deadline)
   end
 
@@ -20,5 +21,9 @@ class Item
     raise 'invalid date' unless Item.valid_date?(new_deadline)
 
     @deadline = new_deadline
+  end
+
+  def toggle
+    @done = !@done
   end
 end
