@@ -9,6 +9,7 @@ class Player
   end
 
   def guess
+    print 'Type letter: '
     gets.chomp.downcase
   end
 end
