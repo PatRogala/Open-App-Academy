@@ -16,12 +16,12 @@ class MazeSolver
     until solved?
       @maze.print
       make_move
-      sleep(0.2)
+      sleep(0.1)
     end
 
     puts 'You solved the maze!'
     puts "It took you #{@path.length} moves."
-    puts 'e'
+    puts "The path is #{@path.join}"
   end
 
   def solved?
@@ -34,8 +34,9 @@ class MazeSolver
     end
 
     @maze[best_move] = 'X'
+
+    @path << arrow(best_move)
     @current = best_move
-    @path << best_move
   end
 
   def possible_moves
@@ -48,6 +49,13 @@ class MazeSolver
 
   def move_cost(move)
     (@end[0] - move[0]).abs + (@end[1] - move[1]).abs
+  end
+
+  def arrow(best_move)
+    return '↓' if @current[0] < best_move[0]
+    return '↑' if @current[0] > best_move[0]
+    return '→' if @current[1] < best_move[1]
+    return '←' if @current[1] > best_move[1]
   end
 end
 
