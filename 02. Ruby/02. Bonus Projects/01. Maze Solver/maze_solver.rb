@@ -42,9 +42,11 @@ class MazeSolver
   def possible_moves
     moves = [[-1, 0], [1, 0], [0, -1], [0, 1]] # UP, DOWN, LEFT, RIGHT
 
-    moves.map do |move|
+    moves.map! do |move|
       [@current[0] + move[0], @current[1] + move[1]]
-    end.select { |move| @maze.valid_move?(move) }
+    end
+
+    moves.select { |move| @maze.valid_move?(move) }
   end
 
   def move_cost(move)
