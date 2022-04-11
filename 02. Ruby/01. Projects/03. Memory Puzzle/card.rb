@@ -2,6 +2,8 @@
 
 # Class indicates a card in a deck
 class Card
+  attr_reader :revealed, :value
+
   def initialize(value)
     @value = value
     @revealed = false
@@ -16,7 +18,7 @@ class Card
   end
 
   def to_s
-    @value
+    @revealed ? @value : ' '
   end
 
   def ==(other)
