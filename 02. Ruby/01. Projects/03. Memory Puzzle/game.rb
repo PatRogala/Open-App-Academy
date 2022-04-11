@@ -1,29 +1,28 @@
 # frozen_string_literal: true
 
 require_relative 'board'
+require_relative 'human_player'
 
 # class that indicates game of memory puzzle
 class Game
   def initialize
     @board = Board.new
     @previous_guess = nil
+    @player = HumanPlayer.new
   end
 
   def play
     until over?
       @board.render
-      pos = input_pos
+      pos = @player.propmt
       make_guess(pos)
     end
+
+    puts 'You won!'
   end
 
   def over?
     @board.won?
-  end
-
-  def input_pos
-    puts 'Enter a position on the board (e.g., "2,3")'
-    gets.chomp.split(',').map(&:to_i)
   end
 
   def make_guess(pos)
