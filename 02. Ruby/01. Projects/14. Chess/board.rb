@@ -11,6 +11,8 @@ require_relative 'pieces/pawn'
 
 # Class that represents a board of chess
 class Board
+  attr_reader :rows
+
   def initialize
     @rows = Array.new(8) { Array.new(8) }
     @null_piece = NullPiece.instance
@@ -31,6 +33,34 @@ class Board
     @rows[row][col] = val
   end
 
+  def add_piece(piece, pos)
+    raise 'position not empty' unless empty?(pos)
+
+    self[pos] = piece
+  end
+
+  def checkmate?(color)
+    return false unless in_check?(color)
+
+    pieces.select { |p| p.color == color }.all? do |piece|
+      piece.valid_moves.empty?
+    end
+  end
+
+  def dup
+    new_board = Board.new(false)
+
+    pieces.each do |piece|
+      piece.class.new(piece.color, new_board, piece.pos)
+    end
+
+    new_board
+  end
+
+  def empty?(pos)
+    self[pos].empty?
+  end
+
   def move_piece(start_pos, end_pos, color)
     raise 'There is no piece at that position' if self[start_pos].empty?
     raise 'You cannot move there' unless valid_pos?(end_pos)
@@ -38,6 +68,13 @@ class Board
     piece = self[start_pos]
     handle_move_piece(piece, start_pos, end_pos, color)
     move_piece!(start_pos, end_pos)
+  end
+
+  def in_check?(color)
+    king_pos = find_king(color).pos
+    pieces.any? do |p|
+      p.color != color && p.moves.include?(king_pos)
+    end
   end
 
   def move_piece!(start_pos, end_pos)
@@ -55,6 +92,10 @@ class Board
 
   def valid_pos?(pos)
     pos.all? { |coord| coord.between?(0, 7) }
+  end
+
+  def pieces
+    @rows.flatten.reject(&:empty?)
   end
 
   private
@@ -95,5 +136,9 @@ class Board
         @rows[row][col] = @null_piece
       end
     end
+  end
+
+  def find_king(color)
+    pieces.find { |p| p.color == color && p.is_a?(King) }
   end
 end
