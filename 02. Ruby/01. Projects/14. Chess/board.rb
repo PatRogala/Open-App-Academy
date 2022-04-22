@@ -13,10 +13,9 @@ require_relative 'pieces/pawn'
 class Board
   attr_reader :rows
 
-  def initialize
-    @rows = Array.new(8) { Array.new(8) }
+  def initialize(fill_board = true)
     @null_piece = NullPiece.instance
-    populate
+    make_starting_grid(fill_board)
   end
 
   def [](pos)
@@ -33,18 +32,16 @@ class Board
     @rows[row][col] = val
   end
 
-  def add_piece(piece, pos)
-    raise 'position not empty' unless empty?(pos)
-
-    self[pos] = piece
-  end
-
   def checkmate?(color)
     return false unless in_check?(color)
 
     pieces.select { |p| p.color == color }.all? do |piece|
       piece.valid_moves.empty?
     end
+  end
+
+  def add_piece(piece, pos)
+    self[pos] = piece
   end
 
   def dup
@@ -61,7 +58,7 @@ class Board
     self[pos].empty?
   end
 
-  def move_piece(start_pos, end_pos, color)
+  def move_piece(color, start_pos, end_pos)
     raise 'There is no piece at that position' if self[start_pos].empty?
     raise 'You cannot move there' unless valid_pos?(end_pos)
 
@@ -85,7 +82,7 @@ class Board
   end
 
   def handle_move_piece(piece, start_pos, end_pos, color)
-    raise 'You must move your own piece' unless self[start_pos].piece.color != color
+    raise 'You must move your own piece' unless self[start_pos].color == color
     raise 'Piece does not move like that' unless piece.moves.include?(end_pos)
     raise 'You cannot move there' unless piece.valid_moves.include?(end_pos)
   end
@@ -100,45 +97,33 @@ class Board
 
   private
 
-  def populate
-    populate_black_figures
-    populate_nil_figures
-    populate_white_figures
-  end
-
-  def populate_white_figures
-    back_row = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
-
-    back_row.each_with_index do |piece, col|
-      @rows[7][col] = piece.new(:black, self, [7, col])
-    end
-
-    @rows[6].each_with_index do |_, col|
-      @rows[6][col] = Pawn.new(:black, self, [6, col])
-    end
-  end
-
-  def populate_black_figures
-    back_row = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
-
-    back_row.each_with_index do |piece, col|
-      @rows[0][col] = piece.new(:black, self, [0, col])
-    end
-
-    @rows[1].each_with_index do |_, col|
-      @rows[1][col] = Pawn.new(:black, self, [1, col])
-    end
-  end
-
-  def populate_nil_figures
-    (2..5).each do |row|
-      @rows[row].each_with_index do |_, col|
-        @rows[row][col] = @null_piece
-      end
-    end
-  end
-
   def find_king(color)
     pieces.find { |p| p.color == color && p.is_a?(King) }
+  end
+
+  def make_starting_grid(fill_board)
+    @rows = Array.new(8) { Array.new(8, @null_piece) }
+    return unless fill_board
+
+    %i[white black].each do |color|
+      fill_back_row(color)
+      fill_pawns_row(color)
+    end
+  end
+
+  def fill_back_row(color)
+    back_pieces = [
+      Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
+    ]
+
+    i = color == :white ? 7 : 0
+    back_pieces.each_with_index do |piece_class, j|
+      piece_class.new(color, self, [i, j])
+    end
+  end
+
+  def fill_pawns_row(color)
+    i = color == :white ? 6 : 1
+    8.times { |j| Pawn.new(color, self, [i, j]) }
   end
 end

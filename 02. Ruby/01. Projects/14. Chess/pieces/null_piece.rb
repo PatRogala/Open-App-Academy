@@ -9,7 +9,8 @@ class NullPiece < Piece
   include Singleton
 
   def initialize
-    super(:none, nil, nil)
+    @symbol = ' '
+    @color = :none
   end
 
   def moves
