@@ -11,7 +11,7 @@ class Bishop < Piece
     '♝'.colorize(color)
   end
 
-  private
+  protected
 
   def move_dirs
     diagonal_dirs
