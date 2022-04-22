@@ -27,14 +27,26 @@ module Slideable
     raise NotImplementedError
   end
 
-  def grow_unblocked_moves_in_dir(delta_x, delta_y)
+  def grow_unblocked_moves_in_dir(dx, dy)
+    cur_x, cur_y = pos
     moves = []
-    cur_pos = [@pos[0] + delta_x, @pos[1] + delta_y]
-    while valid_unblocked_move?(pos)
-      moves << cur_pos
-      cur_pos = [cur_pos[0] + delta_x, cur_pos[1] + delta_y]
+    loop do
+      cur_x += dx
+      cur_y += dy
+      pos = [cur_x, cur_y]
+
+      break unless board.valid_pos?(pos)
+
+      if board.empty?(pos)
+        moves << pos
+      else
+        # can take an opponent's piece
+        moves << pos if board[pos].color != color
+
+        # can't move past blocking piece
+        break
+      end
     end
-    moves << cur_pos if @board.valid_pos?(cur_pos) && @board[cur_pos].color != @color
     moves
   end
 
