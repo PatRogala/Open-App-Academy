@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'question_database'
+require_relative 'user'
+require_relative 'question'
 
 # Class that represents replies table in the database
 class Reply
@@ -43,5 +45,29 @@ class Reply
     @question_id = options['question_id']
     @user_id = options['user_id']
     @parent_id = options['parent_id']
+  end
+
+  def author
+    User.find_by_id(@user_id)
+  end
+
+  def question
+    Question.find_by_id(@question_id)
+  end
+
+  def parent_reply
+    return nil if @parent_id.nil?
+
+    Reply.find_by_id(@parent_id)
+  end
+
+  def child_replies
+    replies = QuestionsDatabase.instance.execute(<<-SQL, @id)
+      SELECT *
+      FROM replies
+      WHERE parent_id = ?
+    SQL
+
+    replies.map { |reply| Question.new(reply) }
   end
 end

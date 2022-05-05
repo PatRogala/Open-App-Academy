@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'question_database'
+require_relative 'question'
+require_relative 'reply'
 
 # Class that represents questions table in the database
 class User
@@ -31,5 +33,13 @@ class User
     @id = options['id']
     @fname = options['fname']
     @lname = options['lname']
+  end
+
+  def authored_questions
+    Question.find_by_author_id(@id)
+  end
+
+  def authored_replies
+    Reply.find_by_user_id(@id)
   end
 end
