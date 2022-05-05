@@ -28,6 +28,19 @@ class QuestionFollow
     questions.map { |question| Question.new(question) }
   end
 
+  def self.most_followed_questions(limit)
+    questions = QuestionsDatabase.instance.execute(<<-SQL, limit)
+      SELECT questions.*
+      FROM questions
+      JOIN question_follows ON questions.id = question_follows.question_id
+      GROUP BY questions.id
+      ORDER BY COUNT(*) DESC
+      LIMIT ?
+    SQL
+
+    questions.map { |question| Question.new(question) }
+  end
+
   def initialize(options)
     @id = options['id']
     @user_id = options['user_id']

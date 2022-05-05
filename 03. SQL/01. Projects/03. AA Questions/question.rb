@@ -4,6 +4,7 @@ require_relative 'question_database'
 require_relative 'user'
 require_relative 'reply'
 require_relative 'question_follow'
+require_relative 'question_like'
 
 # Class that represents questions table in the database
 class Question
@@ -30,6 +31,14 @@ class Question
     questions.map { |question| Question.new(question) }
   end
 
+  def self.most_followed(limit)
+    QuestionFollow.most_followed_questions(limit)
+  end
+
+  def self.most_liked(limit)
+    QuestionLike.most_liked_questions(limit)
+  end
+
   def initialize(options)
     @id = options['id']
     @title = options['title']
@@ -47,5 +56,34 @@ class Question
 
   def followers
     QuestionFollow.followers_for_question_id(@id)
+  end
+
+  def likers
+    QuestionLike.likers_for_question_id(@id)
+  end
+
+  def num_likes
+    QuestionLike.num_likes_for_question_id(@id)
+  end
+
+  def save
+    @id.nil? ? insert : update
+  end
+
+  def insert
+    QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id)
+      INSERT INTO questions (title, body, author_id)
+      VALUES (?, ?, ?)
+    SQL
+
+    @id = QuestionsDatabase.instance.last_insert_row_id
+  end
+
+  def update
+    QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id, @id)
+      UPDATE questions
+      SET title = ?, body = ?, author_id = ?
+      WHERE id = ?
+    SQL
   end
 end

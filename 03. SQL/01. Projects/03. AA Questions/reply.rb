@@ -70,4 +70,25 @@ class Reply
 
     replies.map { |reply| Question.new(reply) }
   end
+
+  def save
+    @id.nil? ? insert : update
+  end
+
+  def insert
+    QuestionsDatabase.instance.execute(<<-SQL, @body, @question_id, @user_id, @parent_id)
+      INSERT INTO replies (body, question_id, user_id, parent_id)
+      VALUES (?, ?, ?, ?)
+    SQL
+
+    @id = QuestionsDatabase.instance.last_insert_row_id
+  end
+
+  def update
+    QuestionsDatabase.instance.execute(<<-SQL, @body, @question_id, @user_id, @parent_id, @id)
+      UPDATE replies
+      SET body = ?, question_id = ?, user_id = ?, parent_id = ?
+      WHERE id = ?
+    SQL
+  end
 end
