@@ -1,0 +1,23 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+development:
+  adapter: sqlite3
+  timeout: 5000
+  pool: 5
+  database: db/associations_exercise_development.sqlite3
+
+test:
+  adapter: sqlite3
+  timeout: 5000
+  pool: 5
+  database: db/associations_exercise_test.sqlite3
+
+production:
+  adapter: sqlite3
+  timeout: 5000
+  pool: 5
+  database: db/ssociations_exercise_production.sqlite3
