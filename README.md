@@ -27,7 +27,7 @@ SUM:                           511           3895           2698          87380
 ### ✅ Intro To Programming
 ### ✅ Software Engineering Foundations
 ### ✅ Ruby
-### ❌ SQL
+### ✅ SQL
 ### ❌ Rails
 ### ❌ JavaScript
 ### ❌ React
