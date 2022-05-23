@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_23_080609) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_23_120615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
+  create_table "artworks", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "image_url", null: false
+    t.integer "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title", "artist_id"], name: "index_artworks_on_title_and_artist_id", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
