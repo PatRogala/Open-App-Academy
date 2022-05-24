@@ -1,6 +1,7 @@
 class ArtworksController < ApplicationController
   def index
-    artworks = Artwork.all
+    artworks = Artwork.where(artist_id: params[:user_id]) +
+               Artwork.where(id: ArtworkShare.where(viewer_id: params[:user_id]).pluck(:artwork_id))
     render json: artworks
   end
 
