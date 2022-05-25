@@ -14,6 +14,20 @@ class ArtworkSharesController < ApplicationController
     render json: artwork_share
   end
 
+  def favorite
+    artwork = ArtworkShare.find_by(id: params[:id], viever_id: params[:user_id])
+    artwork.favorite = true
+    artwork.save
+    render json: artwork
+  end
+
+  def unfavorite
+    artwork = ArtworkShare.find_by(id: params[:id], viever_id: params[:user_id])
+    artwork.favorite = false
+    artwork.save
+    render json: artwork
+  end
+
   private
 
   def artwork_share_params
