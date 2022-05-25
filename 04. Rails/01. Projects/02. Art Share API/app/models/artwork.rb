@@ -8,4 +8,6 @@ class Artwork < ApplicationRecord
   has_many :shared_viewers, through: :artwork_shares, source: :viewer
   has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable
+  has_many :artwork_collections
+  has_many :collections, through: :artwork_collections
 end
