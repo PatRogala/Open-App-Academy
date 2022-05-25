@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   end
   resources :artworks, only: %i[show create update destroy]
   resources :artwork_shares, only: %i[create destroy]
+  resources :comments, only: %i[index create destroy]
 end
