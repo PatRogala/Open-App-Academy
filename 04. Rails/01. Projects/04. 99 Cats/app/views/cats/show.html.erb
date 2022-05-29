@@ -36,13 +36,18 @@
           <th>Start Date</th>
           <th>End Date</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
         <% @rental_requests.each do |req| %>
-          <tr>
-            <td><%= req.start_date %></td>
-            <td><%= req.end_date %></td>
-            <td><%= req.status %></td>
-          </tr>
+        <tr>
+          <td><%= req.start_date %></td>
+          <td><%= req.end_date %></td>
+          <td><%= req.status %></td>
+          <td>
+            <%= button_to 'Approve', approve_cat_rental_request_url(req) if req.pending? %>
+            <%= button_to 'Deny', deny_cat_rental_request_url(req) if req.pending? %>
+          </td>
+        </tr>
         <% end %>
       </tbody>
     </table>
