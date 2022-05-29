@@ -1,0 +1,39 @@
+<% url = cat.persisted? ? cat_url(cat) : cats_url %>
+
+<main>
+  <section class="page">
+    <div class="centered-box">
+      <h1>New Cat</h1>
+      <form action="<%= url %>" method="post">
+        <%= hidden_field_tag :_method, :put if cat.persisted? %>
+        <label for="cat_name">Name</label>
+        <input type="text" name="cat[name]" id="cat_name" value="<%= cat.name %>">
+        <br>
+        <label for="cat_birth_date">Birth date</label>
+        <input type="date" name="cat[birth_date]" id="cat_birth_date" value="<%= cat.birth_date %>">
+        <br>
+        <label for="cat_color">Color</label>
+        <select name="cat[color]" id="cat_color">
+          <option selected disabled>-- select a color --</option>
+          <% Cat::CAT_COLORS.each do |color| %>
+            <option value="<%= color %>" <%= "selected" if cat.color == color %>>
+              <%= color %>
+            </option>
+          <% end %>
+        </select>
+        <br>
+        <input type="radio" name="cat[sex]" value="M" id="cat_sex_male" <%= "checked" if cat.sex == 'M' %>>
+        <label for="cat_sex_male">Male</label>
+        <input type="radio" name="cat[sex]" value="F" id="cat_sex_female" <%= "checked" if cat.sex == 'F' %>>
+        <label for="cat_sex_female">Female</label>
+        <br>
+        <label>
+          Description
+          <textarea name="cat[description]"><%= cat.description %></textarea>
+        </label>
+        <br>
+        <input type="submit" value="Create cat!">
+      </form>
+    </div>
+  </section>
+</main>
