@@ -12,6 +12,8 @@ class Cat < ApplicationRecord
   validates :color, inclusion: { in: CAT_COLORS, message: 'is not a valid color' }
   validates :sex, inclusion: { in: %w[F M], message: 'is not a valid option' }
 
+  has_many :cat_rental_requests, dependent: :destroy
+
   def age
     time_ago_in_words(birth_date)
   end

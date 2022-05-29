@@ -27,5 +27,25 @@
       </tbody>
     </table>
     <a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+    <br>
+    <br>
+    <h1>Rental Requests</h1>
+    <table>
+      <tbody>
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+        </tr>
+        <% @rental_requests.each do |req| %>
+          <tr>
+            <td><%= req.start_date %></td>
+            <td><%= req.end_date %></td>
+            <td><%= req.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <a href="<%= new_cat_rental_request_url %>">Make new request</a>
   </div>
 </section>
