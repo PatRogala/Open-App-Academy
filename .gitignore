@@ -1,2 +1,4 @@
+# default gitigore for mac files
+
 .DS_Store
 *.db
