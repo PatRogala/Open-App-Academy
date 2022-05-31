@@ -2,6 +2,7 @@
 Solutions to [App Academy Open](https://open.appacademy.io)
 
 ## Current Code Stats (updated daily)
+
 ```
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
