@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token!
 
-  def self.reset_session_token!
+  def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64
     save!
     session_token
