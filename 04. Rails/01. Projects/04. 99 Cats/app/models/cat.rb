@@ -13,6 +13,7 @@ class Cat < ApplicationRecord
   validates :sex, inclusion: { in: %w[F M], message: 'is not a valid option' }
 
   has_many :cat_rental_requests, dependent: :destroy
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
 
   def age
     time_ago_in_words(birth_date)

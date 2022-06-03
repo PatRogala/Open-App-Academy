@@ -43,10 +43,12 @@
           <td><%= req.start_date %></td>
           <td><%= req.end_date %></td>
           <td><%= req.status %></td>
-          <td>
-            <%= button_to 'Approve', approve_cat_rental_request_url(req) if req.pending? %>
-            <%= button_to 'Deny', deny_cat_rental_request_url(req) if req.pending? %>
-          </td>
+          <% if current_user && current_user.cats.include?(@cat) %>
+            <td>
+              <%= button_to 'Approve', approve_cat_rental_request_url(req) if req.pending? %>
+              <%= button_to 'Deny', deny_cat_rental_request_url(req) if req.pending? %>
+            </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
