@@ -1,0 +1,16 @@
+<section class="page">
+  <div class="centered-box">
+    <h1>New User</h1>
+    <form action="<%= users_url %>" method="post">
+      <label for="user_username">User Name</label>
+      <input type="text" name="user[username]" id="user_username" value="" autocomplete="off">
+      <br>
+
+      <label for="user_password">Password</label>
+      <input type="password" name="user[password]" id="user_password" value="" autocomplete="off">
+      <br>
+
+      <input type="submit">
+    </form>
+  </div>
+</section>
