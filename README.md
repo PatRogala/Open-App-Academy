@@ -1,6 +1,6 @@
 # App Academy Open
 Solutions to [App Academy Open](https://open.appacademy.io)
-e
+
 ## Current Code Stats (updated daily)
 
 ```
