@@ -24,6 +24,7 @@ class ControllerBase
 
     @res.status = 302
     @res.location = url
+    session.store_session(@res)
     @already_built_response = true
   end
 
@@ -35,6 +36,7 @@ class ControllerBase
 
     @res.write(content)
     @res.content_type = content_type
+    session.store_session(@res)
     @already_built_response = true
   end
 
@@ -49,7 +51,9 @@ class ControllerBase
   end
 
   # method exposing a `Session` object
-  def session; end
+  def session
+    @session ||= Session.new(@req)
+  end
 
   # use this with the router to call action_name (:index, :show, :create...)
   def invoke_action(name); end
