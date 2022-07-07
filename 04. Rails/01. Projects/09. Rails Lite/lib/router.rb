@@ -16,7 +16,13 @@ class Route
   # use pattern to pull out route params (save for later?)
   # instantiate controller and call controller action
   def run(req, res)
-    @controller_class.new(req, res, {}).invoke_action(action_name)
+    route_params = {}
+    match_data = pattern.match(req.path)
+    match_data.names.each do |name|
+      route_params[name] = match_data[name]
+    end
+
+    @controller_class.new(req, res, route_params).invoke_action(action_name)
   end
 end
 
@@ -34,7 +40,9 @@ class Router
 
   # evaluate the proc in the context of the instance
   # for syntactic sugar :)
-  def draw(&proc); end
+  def draw(&proc)
+    instance_eval(&proc)
+  end
 
   # make each of these methods that
   # when called add route
