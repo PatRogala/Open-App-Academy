@@ -7,18 +7,21 @@ Solutions to [App Academy Open](https://open.appacademy.io)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Ruby                           488           3751           2346          57092
+Ruby                           725           4935           3566          61551
 SQL                              4             95             12          30266
-CSS                             12            100             56            492
-HTML                             5             37              3            361
-ERB                             20             28              0            335
-YAML                            37            161            673            299
-JavaScript                      10             22             49             81
-Markdown                         3             19              0             54
-Bourne Shell                     6             12              7             42
-JSON                             2              0              0             10
+ERB                            106            223              0           1776
+HTML                            14            129              6            914
+CSS                             20            188             85            894
+SCSS                            31            154             99            780
+YAML                            68            291           1142            641
+JavaScript                      13             35             73             99
+Markdown                         4             19              0             55
+Bourne Shell                     7             14             11             46
+Dockerfile                       2              6             22             42
+JSON                             7              0              0             35
+CoffeeScript                     1              0              3              0
 -------------------------------------------------------------------------------
-SUM:                           587           4225           3146          89032
+SUM:                          1002           6089           5019          97099
 -------------------------------------------------------------------------------
 ```
 
@@ -29,7 +32,7 @@ SUM:                           587           4225           3146          89032
 ### ✅ Software Engineering Foundations
 ### ✅ Ruby
 ### ✅ SQL
-### ❌ Rails
+### ✅ Rails
 ### ❌ JavaScript
 ### ❌ React
 ### ❌ Full Stack Project
