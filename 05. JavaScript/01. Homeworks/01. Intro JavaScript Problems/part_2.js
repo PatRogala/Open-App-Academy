@@ -41,3 +41,9 @@ Elephant.paradeHelper = function(elephant) {
 }
 
 herd.forEach(Elephant.paradeHelper);
+
+
+function dinerBreakfast(meal, callback) {
+  let order = `${meal} please`;
+  callback(order);
+}
