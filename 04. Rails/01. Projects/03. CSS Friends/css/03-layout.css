@@ -1,34 +1,21 @@
 /* PHASE 3: Layout */
 
 .content {
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   background: #fff;
   width: 900px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-
-.flex {
-  display: flex;
-}
-
-.content:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 240px;
-  width: 1px;
-  background: #ccc;
+  border: 1px solid #ccc;
+  border-top: 0;
 }
 
 .content-sidebar {
   width: 200px;
   min-height: 200px;
   padding: 20px;
+  padding-right: 19px;
+  border-right: 1px solid #ccc;
 }
 
 .content-main {

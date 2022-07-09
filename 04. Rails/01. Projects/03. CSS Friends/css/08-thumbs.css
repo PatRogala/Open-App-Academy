@@ -1,7 +1,11 @@
 /* PHASE 8: Thumbs */
 
+.profile-friends {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .profile-friends > li {
-  float: left;
   width: 60px;
   margin: 0 0 10px 0;
 }

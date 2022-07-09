@@ -2,14 +2,13 @@
 
 .form {
   margin: 0 0 20px 0;
+  display: flex;
 }
 
 .form-thumb {
-  float: left;
 }
 
 .form-fieldset {
-  float: left;
   margin: 0 0 0 20px;
   padding: 19px;
   width: 500px;

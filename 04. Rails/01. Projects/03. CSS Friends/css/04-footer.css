@@ -1,18 +1,17 @@
 /* PHASE 4: Footer */
 
 .footer {
+  display: flex;
+  justify-content: space-between;
   width: 900px;
   margin: 0 auto 50px auto;
   background: #fff;
   color: #aaa;
   font-size: 14px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #ccc;
+  border-top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .footer-copy {
@@ -21,8 +20,8 @@
 }
 
 .footer-links {
-  padding: 20px;
   display: flex;
+  padding: 20px;
 }
 
 .footer-links > li {
