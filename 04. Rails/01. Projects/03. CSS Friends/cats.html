@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>App Academy Friends | PHASE 0: Reset</title>
-    <link rel="stylesheet" href="css/00-reset.css" type="text/css">
-    <link rel="stylesheet" href="css/01-header.css" type="text/css">
-    <link rel="stylesheet" href="css/02-notifications.css" type="text/css">
-    <link rel="stylesheet" href="css/03-layout.css" type="text/css">
-    <link rel="stylesheet" href="css/04-footer.css" type="text/css">
-    <link rel="stylesheet" href="css/05-cats.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="header">
-      <nav class="header-nav">
-        <h1 class="header-logo">
-          <a href="#">App Academy Friends</a>
-        </h1>
-        <ul class="header-list">
-          <li>
-            <a href="#">Notifications <strong class="badge">3</strong></a>
-            <ul class="header-notifications">
-              <li><a href="#">Meagan likes your photo.</a></li>
-              <li><a href="#">Oscar left you a comment.</a></li>
-              <li><a href="#">Maurice is now following you.</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="content">
-      <header class="content-header">
-        <h1>Sennacy The Great</h1>
-        <button class="content-header-add-friend">Add Friend</button>
-      </header>
-      <div class="flex">
-        <section class="content-sidebar">
 
-        </section>
-        <section class="content-main">
+<head>
+  <meta charset="utf-8">
+  <title>App Academy Friends | PHASE 0: Reset</title>
+  <link rel="stylesheet" href="css/00-reset.css" type="text/css">
+  <link rel="stylesheet" href="css/01-header.css" type="text/css">
+  <link rel="stylesheet" href="css/02-notifications.css" type="text/css">
+  <link rel="stylesheet" href="css/03-layout.css" type="text/css">
+  <link rel="stylesheet" href="css/04-footer.css" type="text/css">
+  <link rel="stylesheet" href="css/05-cats.css" type="text/css">
+  <link rel="stylesheet" href="css/06-sidebar.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
 
-        </section>
-      </div>
-    </main>
-    <footer class="footer">
-      <small class="footer-copy">
-        © 2022 PatRogala. All rights reserved.
-      </small>
-      <ul class="footer-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Privacy</a></li>
+<body>
+  <header class="header">
+    <nav class="header-nav">
+      <h1 class="header-logo">
+        <a href="#">App Academy Friends</a>
+      </h1>
+      <ul class="header-list">
+        <li>
+          <a href="#">Notifications <strong class="badge">3</strong></a>
+          <ul class="header-notifications">
+            <li><a href="#">Meagan likes your photo.</a></li>
+            <li><a href="#">Oscar left you a comment.</a></li>
+            <li><a href="#">Maurice is now following you.</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li>
       </ul>
-    </footer>
-  </body>
+    </nav>
+  </header>
+  <main class="content">
+    <header class="content-header">
+      <h1>Sennacy The Great</h1>
+      <button class="content-header-add-friend">Add Friend</button>
+    </header>
+    <div class="flex">
+      <section class="content-sidebar">
+
+        <a href="#" class="profile-picture">
+          <img src="./images/cats.jpg" alt="">
+        </a>
+
+        <div class="profile-info">
+          <h2>Sennacy</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </div>
+
+        <ul class="profile-nav">
+          <li><a href="#">Wall</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Friends</a></li>
+          <li><a href="#">Photos</a></li>
+        </ul>
+
+      </section>
+      <section class="content-main">
+
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <small class="footer-copy">
+      © 2022 PatRogala. All rights reserved.
+    </small>
+    <ul class="footer-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+  </footer>
+</body>
+
 </html>
