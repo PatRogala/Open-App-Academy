@@ -5,7 +5,7 @@ function Game() {
 
 Game.prototype.addAsteroids = function() {
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
-    this.asteroids.push(new Asteroid({pos: this.randomPosition()}));
+    this.asteroids.push(new Asteroid({pos: this.randomPosition(), game: this}));
   }
 }
 
@@ -27,6 +27,13 @@ Game.prototype.moveObjects = function() {
   for (let i = 0; i < this.asteroids.length; i++) {
     this.asteroids[i].move();
   }
+}
+
+Game.prototype.wrap = function(pos) {
+  return [
+    pos[0] > Game.DIM_X ? pos[0] % Game.DIM_X : pos[0] < 0 ? pos[0] + Game.DIM_X : pos[0],
+    pos[1] > Game.DIM_Y ? pos[1] % Game.DIM_Y : pos[1] < 0 ? pos[1] + Game.DIM_Y : pos[1]
+  ];
 }
 
 Game.DIM_X = 800;

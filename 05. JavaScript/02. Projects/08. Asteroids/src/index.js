@@ -13,8 +13,8 @@ window.GameView = GameView;
 window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
-  ctx.height = Game.DIM_Y;
-  ctx.width = Game.DIM_X;
+  canvas.height = Game.DIM_Y;
+  canvas.width = Game.DIM_X;
 
   const game = new Game();
   const gameView = new GameView(game, ctx);
