@@ -1,5 +1,6 @@
 function Game() {
   this.asteroids = [];
+  this.addAsteroids();
 }
 
 Game.prototype.addAsteroids = function() {
