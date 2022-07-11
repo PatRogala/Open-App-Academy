@@ -83,6 +83,10 @@ Game.prototype.add = function(object) {
   }
 }
 
+Game.prototype.isOutOfBounds = function(pos) {
+  return (pos[0] > Game.DIM_X || pos[0] < 0 || pos[1] > Game.DIM_Y || pos[1] < 0);
+}
+
 Game.DIM_X = 800;
 Game.DIM_Y = 600;
 Game.NUM_ASTEROIDS = 10;
