@@ -18,10 +18,14 @@ MovingObject.prototype.move = function() {
   if (this.game.isOutOfBounds(newPos)) {
     if (this.isWrappable) {
       this.pos = this.game.wrap(newPos);
+      return;
     } else {
       this.game.remove(this);
+      return;
     }
   }
+
+  this.pos = newPos;
 }
 
 MovingObject.prototype.isCollidedWith = function(otherObject) {
