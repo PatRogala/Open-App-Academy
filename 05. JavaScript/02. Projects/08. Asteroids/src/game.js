@@ -36,6 +36,26 @@ Game.prototype.wrap = function(pos) {
   ];
 }
 
+Game.prototype.checkCollisions = function() {
+  for (let i = 0; i < this.asteroids.length; i++) {
+    for (let j = i + 1; j < this.asteroids.length; j++) {
+      if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
+        alert("COLLISION");;
+      }
+    }
+  }
+}
+
+Game.prototype.step = function() {
+  this.moveObjects();
+  this.checkCollisions();
+}
+
+Game.prototype.remove = function(asteroid) {
+  const index = this.asteroids.indexOf(asteroid);
+  this.asteroids.splice(index, 1);
+}
+
 Game.DIM_X = 800;
 Game.DIM_Y = 600;
 Game.NUM_ASTEROIDS = 10;
