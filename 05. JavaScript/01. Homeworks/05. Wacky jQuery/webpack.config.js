@@ -10,5 +10,5 @@ module.exports = {
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
-  devtool: 'source-maps',
+  devtool: 'source-map',
 };
