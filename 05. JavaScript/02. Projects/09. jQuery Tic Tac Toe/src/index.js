@@ -2,5 +2,6 @@ const View = require('./ttt-view');
 const Game = require('./game');
 
   $(() => {
-    // Your code here
+    const game = new Game();
+    new View(game, $('.ttt'));
   });
