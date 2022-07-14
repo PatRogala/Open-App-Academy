@@ -1,52 +1,67 @@
-class HanoiView {
+class View {
   constructor(game, $el) {
     this.game = game;
     this.$el = $el;
+    this.fromTowerIdx = null;
+    this.$el.on('click', 'ul', this.clickTower.bind(this));
     this.setupTowers();
     this.render();
-    this.clickTower();
+  }
+
+  clickTower(event) {
+    const clickedTowerIdx = $(event.currentTarget).index();
+
+    if (this.fromTowerIdx === null) {
+      this.fromTowerIdx = clickedTowerIdx;
+    } else {
+      if (!this.game.move(this.fromTowerIdx, clickedTowerIdx)) {
+        alert('Invalid Move! Try again.');
+      }
+      this.fromTowerIdx = null;
+    }
+
+    this.render();
+
+    if (this.game.isWon()) {
+      this.$el.off('click');
+      this.$el.addClass('game-over');
+      alert('Good work, you!');
+    }
   }
 
   setupTowers() {
-    const $towers = $('<ul>');
-    for (let i = 0; i < 3; i++) {
-      const $tower = $('<li>');
-      $tower.data('tower-idx', i);
-      $tower.data('disc-count', this.game.towers[i].length);
-      $tower.appendTo($towers);
+    this.$el.empty();
+    let $tower, $disk;
+
+    for (let towerIdx = 0; towerIdx < 3; towerIdx++) {
+      $tower = $('<ul>');
+
+      for (let diskIdx = 0; diskIdx < 3; diskIdx++) {
+        $disk = $('<li>');
+        $tower.append($disk);
+      }
+
+      this.$el.append($tower);
     }
-    $towers.appendTo(this.$el);
   }
 
   render() {
-    const $towers = $('ul');
-    $towers.empty();
-    for (let i = 0; i < 3; i++) {
-      const $tower = $('<li>');
-      $tower.data('tower-idx', i);
-      $tower.data('disc-count', this.game.towers[i].length);
-      $tower.appendTo($towers);
-    }
-    $towers.appendTo(this.$el);
-  }
+    const $towers = this.$el.find('ul');
+    $towers.removeClass();
 
-  clickTower() {
-    const $towers = $('ul');
-    $towers.on('click', 'li', event => {
-      const $tower = $(event.currentTarget);
-      const towerIdx = $tower.data('tower-idx');
-      const discCount = $tower.data('disc-count');
-      if (discCount === 0) {
-        alert('Invalid move!');
-      } else {
-        this.game.move(towerIdx);
-        this.render();
-        if (this.game.isWon()) {
-          alert('You win!');
-        }
-      }
+    if (this.fromTowerIdx !== null) {
+      $towers.eq(this.fromTowerIdx).addClass('selected');
+    }
+
+    this.game.towers.forEach((disks, towerIdx) => {
+      const $disks = $towers.eq(towerIdx).children();
+      $disks.removeClass();
+
+      disks.forEach((diskWidth, diskIdx) => {
+        $disks.eq(-1 * (diskIdx + 1)).addClass(`disk-${diskWidth}`);
+      });
     });
   }
 }
 
-module.exports = HanoiView;
+module.exports = View;
