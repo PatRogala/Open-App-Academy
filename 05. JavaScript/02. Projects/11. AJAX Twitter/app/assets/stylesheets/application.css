@@ -13,3 +13,298 @@
  *= require_tree .
  *= require_self
  */
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+a,
+p,
+ol,
+ul,
+li,
+form,
+label,
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  box-sizing: content-box
+}
+
+ol,
+ul {
+  list-style: none
+}
+
+img {
+  width: 100%
+}
+
+input[type='submit'] {
+  border: none;
+  background-color: white;
+  font-size: 100%;
+  cursor: pointer
+}
+
+input {
+  outline: none;
+  border: none
+}
+
+body {
+  background-color: #E6ECF0;
+  color: #657786
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif
+}
+
+a {
+  color: #657786
+}
+
+form {
+  padding: 0px
+}
+
+.page-header {
+  font-family: 'Fredoka One', cursive;
+  font-size: 35px;
+  color: #1da1f2;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center
+}
+
+.errors {
+  color: red;
+  padding: 10px
+}
+
+.errors li {
+  padding-bottom: 10px
+}
+
+input[type='submit'],
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #1da1f2;
+  color: white;
+  margin-bottom: 25px
+}
+
+header {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 600px;
+  max-width: 1000px;
+  width: 100%;
+  height: 60px;
+  background-color: white
+}
+
+.main-nav .logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: 50px;
+  color: #1da1f2;
+  position: relative
+}
+
+.main-nav .logo tiny {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  transform: rotate(-40deg);
+  top: 10px;
+  left: -10px;
+  background: pink;
+  padding: 0 5px
+}
+
+.main-nav .links {
+  display: flex;
+  height: 100%
+}
+
+.main-nav .links li {
+  display: flex;
+  align-items: center
+}
+
+.main-nav .links li:hover {
+  border-bottom: 3px solid #657786
+}
+
+.main-nav .links li form {
+  height: 100%
+}
+
+.main-nav .links li a,
+.main-nav .links li input[type='submit'] {
+  height: calc(100% - 40px);
+  padding: 20px;
+  color: #657786;
+  background-color: white
+}
+
+.simple-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.simple-form div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px
+}
+
+.simple-form div label {
+  padding: 10px;
+  padding-right: 20px
+}
+
+.simple-form input[type='text'],
+.simple-form input[type='password'],
+.simple-form input[type='submit'] {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 20px
+}
+
+.simple-form textarea {
+  margin: 20px;
+  width: 300px;
+  height: 200px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 20px
+}
+
+.tweet-compose label {
+  display: none
+}
+
+.tweet-compose .tweet-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between
+}
+
+.infinite-tweets {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.tweets {
+  margin-bottom: 20px
+}
+
+.tweets:first-child {
+  border-top: 1px #657786 solid
+}
+
+.tweets .tweet {
+  min-height: 150px;
+  width: 300px;
+  background-color: white;
+  border-bottom: 1px #657786 solid;
+  padding: 20px
+}
+
+.tweets .tweet a {
+  color: #1da1f2
+}
+
+.tweets .tweet .tweeter {
+  font-size: 20px
+}
+
+.tweets .tweet .tweetee {
+  font-size: 16px
+}
+
+.tweets .tweet p {
+  font-size: 25px;
+  color: black;
+  padding: 20px;
+  margin: 20px;
+  word-break: break-all
+}
+
+.users {
+  flex-direction: column
+}
+
+.users li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px
+}
+
+.users li a {
+  font-size: 20px;
+  color: #1da1f2
+}
+
+.users li button {
+  margin: 0px
+}
+
+.user-detail {
+  display: flex
+}
+
+.user-detail .users {
+  width: 300px;
+  min-height: 200px;
+  padding: 20px;
+  background-color: white;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  font-size: 20px
+}
+
+.user-detail .users li {
+  color: #1da1f2
+}
+
+.user-detail .users p {
+  margin: 10px;
+  font-size: 16px
+}
