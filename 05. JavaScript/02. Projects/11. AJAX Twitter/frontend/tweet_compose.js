@@ -6,7 +6,11 @@ class TweetCompose {
     this.$tweetsUl = $(this.$el.data("tweets-ul"));
     this.$textarea = $(this.$el.find("#tweet-textarea"));
     this.$textarea.on("input", this.handleInput.bind(this));
+    this.$mentionedUsersDiv = this.$el.find('.mentioned-users');
     this.$el.on("submit", this.submit.bind(this));
+    this.$el.find('.add-mentioned-user').on(
+      'click', this.addMentionedUser.bind(this));
+    this.$el.find('.mentioned-users').on('click', '.remove-mentioned-user', this.removeMentionedUser.bind(this));
   }
 
   submit(event) {
@@ -26,6 +30,7 @@ class TweetCompose {
 
   clearInput() {
     this.$el.find("#tweet-textarea").val("");
+    this.$el.find('.mentioned-users').empty();
   }
 
   handleSuccess(data) {
@@ -46,6 +51,36 @@ class TweetCompose {
     const maxLength = 140;
     const charLeft = maxLength - $textarea.val().length;
     $charLeft.text(`${charLeft} characters left`);
+  }
+
+  newUserSelect() {
+    const userOptions = window.users
+      .map(user =>
+        `<option value='${user.id}'>${user.username}</option>`)
+      .join('');
+
+    const html = `
+      <div>
+        <select name='tweet[mentioned_user_ids][]'>
+          ${userOptions}
+        </select>
+
+        <button class='remove-mentioned-user'>Remove</button>
+      </div>`;
+
+    return $(html);
+  }
+
+  addMentionedUser(event) {
+    event.preventDefault();
+
+    this.$mentionedUsersDiv.append(this.newUserSelect());
+  }
+
+  removeMentionedUser(event) {
+    event.preventDefault();
+
+    $(event.currentTarget).parent().remove();
   }
 }
 
