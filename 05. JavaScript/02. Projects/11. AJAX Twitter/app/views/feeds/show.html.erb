@@ -2,8 +2,9 @@
 
 <%= render 'tweets/form' %>
 
-<ul id="feed">
-  <% @feed_tweets.each do |tweet| %>
-    <li><%= render 'tweets/tweet', tweet: tweet %></li>
-  <% end %>
-</ul>
+<div class="infinite-tweets">
+  <ul id="feed">
+    <p>No tweets... yet! Follow someone!</p>
+  </ul>
+  <button class="fetch-more">Fetch more tweets!</button>
+</div>
