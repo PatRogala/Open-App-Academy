@@ -1,24 +1,25 @@
 class User < ApplicationRecord
   attr_reader :password
+
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :in_follows,
-    foreign_key: :followee_id,
-    class_name: :Follow
+           foreign_key: :followee_id,
+           class_name: :Follow
 
   has_many :out_follows,
-    foreign_key: :follower_id,
-    class_name: :Follow
+           foreign_key: :follower_id,
+           class_name: :Follow
 
   has_many :followers,
-    through: :in_follows,
-    source: :follower
+           through: :in_follows,
+           source: :follower
 
   has_many :followees,
-    through: :out_follows,
-    source: :followee
+           through: :out_follows,
+           source: :followee
 
   has_many :tweets, dependent: :destroy
 
@@ -40,27 +41,30 @@ class User < ApplicationRecord
   end
 
   def is_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
   end
 
   def ensure_session_token
-    self.session_token ||= SecureRandom::urlsafe_base64
+    self.session_token ||= SecureRandom.urlsafe_base64
   end
 
   def reset_session_token!
-    self.session_token = SecureRandom::urlsafe_base64
-    self.save!
+    self.session_token = SecureRandom.urlsafe_base64
+    save!
   end
 
   def feed_tweets(limit = nil, max_created_at = nil)
-    @tweets = Tweet
-      .joins(:user)
-      .joins('LEFT OUTER JOIN follows ON users.id = follows.followee_id')
-      .where('tweets.user_id = :id OR follows.follower_id = :id', id: self.id)
-      .order('tweets.created_at DESC')
-      .distinct
+    if max_created_at
+      @tweets = Tweet
+                .joins(:user)
+                .joins('LEFT OUTER JOIN follows ON users.id = follows.followee_id')
+                .where('tweets.user_id = :id OR follows.follower_id = :id', id: id)
+                .order('tweets.created_at DESC')
+                .distinct
 
-    # TODO: How can we use limit/max_created_at here??
+      @tweets = @tweets.limit(limit) if limit
+      @tweets = @tweets.where('tweets.created_at < ?', max_created_at) if max_created_at
+    end
 
     @tweets
   end
