@@ -69,3 +69,4 @@ yarn-debug.log*
 /public/uploads
 
 bundle.js
+bundle.js.map

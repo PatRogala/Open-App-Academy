@@ -166,6 +166,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    serialize_json-rails (0.0.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   rails (~> 5.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  serialize_json-rails (~> 0.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

@@ -1,26 +1,16 @@
-<h2>New Tweet!</h2>
-<form action="/tweets" method="POST">
-  <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>">
+<form class="simple-form tweet-compose" data-tweets-ul="#feed">
+  <label for="tweet-textarea">What's on your mind?</label>
+  <textarea id="tweet-textarea" name="content" placeholder="What's on your mind?"></textarea>
+  <strong class="char-left"></strong>
 
-  <label>
-    Content
-    <textarea name="tweet[content]"></textarea>
-  </label>
-  <br>
+  <ul class="mentioned-users"></ul>
 
-  <label>
-    Mention
-    <select name="tweet[mentioned_user_ids][]">
-      <option></option>
-      <% User.all.each do |user| %>
-        <option value="<%= user.id %>"><%= user.username %></option>
-      <% end %>
-    </select>
-  </label>
-  <br>
-
-  <input type="Submit" value="Post Tweet!">
+  <ul class="tweet-actions">
+    <li>
+      <button class="add-mentioned-user">Add mention</button>
+    </li>
+    <li>
+      <input type="submit" value="Post Tweet!">
+    </li>
+  </ul>
 </form>
