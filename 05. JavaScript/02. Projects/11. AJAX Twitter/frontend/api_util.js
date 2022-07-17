@@ -31,6 +31,15 @@ const APIUtil = {
       data: { tweet: data },
       dataType: "json"
     });
+  },
+
+  fetchTweets: data => {
+    return $.ajax({
+      method: "GET",
+      url: "/feed",
+      dataType: "json",
+      data
+    });
   }
 };
 

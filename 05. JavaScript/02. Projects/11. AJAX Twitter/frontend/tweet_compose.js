@@ -36,7 +36,7 @@ class TweetCompose {
   handleSuccess(data) {
     this.clearInput();
     this.unblock();
-    this.$tweetsUl.append(this.renderTweet(data));
+    this.$tweetsUl.trigger("insert-tweet", data);
   }
 
   renderTweet(tweet) {
