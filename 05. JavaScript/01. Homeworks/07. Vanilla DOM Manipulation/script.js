@@ -31,9 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // adding new photos
+  const showForm = (e) => {
+    e.preventDefault();
 
+    document.getElementsByClassName("photo-form-container")[0].className = "photo-form-container";
+  }
   // --- your code here!
 
+  document.querySelectorAll(".photo-show-button").forEach((button) => {
+    button.addEventListener("click", showForm);
+  });
 
+  const addPhoto = (e) => {
+    e.preventDefault();
+    const input = document.getElementsByClassName("photo-url-input")[0];
+    const newLi = document.createElement("li");
+    const newImg = document.createElement("img");
+    newImg.src = input.value;
+    newLi.appendChild(newImg);
+    document.querySelector(".dog-photos").appendChild(newLi);
+  }
+
+  document.querySelectorAll(".photo-url-submit").forEach((submit) => {
+    submit.addEventListener("click", addPhoto);
+  });
 
 });
