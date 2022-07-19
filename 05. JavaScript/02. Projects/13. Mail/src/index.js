@@ -1,4 +1,9 @@
+const Inbox = require('./inbox');
 const Router = require('./router');
+
+const routes = {
+  inbox: Inbox
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   const listElements = document.querySelectorAll('.sidebar-nav li');
@@ -11,6 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   const content = document.querySelector('.content');
-  const router = new Router(content);
+  const router = new Router(content, routes);
   router.start();
 });

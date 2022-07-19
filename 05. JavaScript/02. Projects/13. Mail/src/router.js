@@ -1,6 +1,7 @@
 class Router {
-  constructor(node) {
+  constructor(node, routes) {
     this.node = node;
+    this.routes = routes;
   }
 
   start() {
@@ -11,16 +12,21 @@ class Router {
   }
 
   render() {
+    const component = this.activeRoute();
     this.node.innerHTML = '';
-    const route = this.activeRoute();
-    let ele = document.createElement('p');
-    ele.innerHTML = route;
-    this.node.appendChild(ele);
+
+    if (component === undefined) {
+      return;
+    }
+
+    const node = component.render();
+    this.node.appendChild(node);
   }
 
   activeRoute() {
     const hash = window.location.hash;
-    return hash.slice(1);
+    const routerName = hash.slice(1);
+    return this.routes[routerName];
   }
 }
 
