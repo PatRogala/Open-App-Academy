@@ -1,3 +1,5 @@
+const Router = require('./router');
+
 document.addEventListener('DOMContentLoaded', function() {
   const listElements = document.querySelectorAll('.sidebar-nav li');
   const listItems = Array.from(listElements);
@@ -7,4 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
       window.location.hash = text.toLowerCase();
     });
   });
+
+  const content = document.querySelector('.content');
+  const router = new Router(content);
+  router.start();
 });
