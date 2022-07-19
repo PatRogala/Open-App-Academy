@@ -20,3 +20,27 @@ $l.extend = function(...args) {
   });
   return obj;
 }
+
+$l.ajax = function(options) {
+  const defaults = {
+    url: '',
+    method: 'GET',
+    data: {},
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    success: () => {},
+    error: () => {},
+  };
+
+  const settings = $l.extend(defaults, options);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open(settings.method, settings.url);
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      settings.success(xhr.response);
+    } else {
+      settings.error(xhr.response);
+    }
+  }
+  xhr.send(JSON.stringify(settings.data));
+}
