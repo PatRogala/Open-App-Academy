@@ -12,3 +12,11 @@ window.$l = function(selector) {
   const nodes = document.querySelectorAll(selector);
   return new DOMNodeCollection(Array.from(nodes));
 }
+
+$l.extend = function(...args) {
+  const obj = {};
+  args.forEach(arg => {
+    Object.assign(obj, arg);
+  });
+  return obj;
+}
