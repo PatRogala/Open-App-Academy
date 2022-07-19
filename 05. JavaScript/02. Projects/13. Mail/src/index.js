@@ -18,4 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const content = document.querySelector('.content');
   const router = new Router(content, routes);
   router.start();
+
+  document.location.hash = 'inbox';
 });
