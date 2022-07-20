@@ -1,10 +1,12 @@
 const Sent = require('./sent');
 const Inbox = require('./inbox');
 const Router = require('./router');
+const Compose = require('./compose');
 
 const routes = {
   inbox: Inbox,
-  sent: Sent
+  sent: Sent,
+  compose: Compose
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,4 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
   router.start();
 
   document.location.hash = 'inbox';
+
+
 });
