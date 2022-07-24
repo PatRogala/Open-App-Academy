@@ -56,6 +56,7 @@ p {
   left: 0%;
   right: 0%;
   background: rgba(0, 0, 0, .3);
+  display: none;
 }
 
 .modal-content {
@@ -71,4 +72,8 @@ p {
   left: 50%;
   text-align: center;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.visible {
+  display: block;
 }
