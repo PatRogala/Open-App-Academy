@@ -97,15 +97,7 @@
 
 /* Tabs */
 
-.tab-header{
-  width: 200px;
-  height: 30px;
-  margin: 0 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.tab-header > span{
+.tab-header li{
   width: 65px;
   border-top: 2px solid black;
   border-left: 1px solid black;
@@ -117,26 +109,35 @@
   text-align: center;
   cursor: pointer;
   background-color: lightblue;
+  display: inline;
 }
 
-.tab-header > span:first-child{
+.tab-header ul {
+  width: 200px;
+  height: 30px;
+  margin: 0 -20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-header li:first-child{
   border-left: 2px solid black;
 }
 
-.tab-header > span:last-child{
+.tab-header li:last-child{
   border-right: 2px solid black;
 }
 
-.tab-header > span:hover{
+.tab-header li:hover{
   background-color: black;
   color: white;
 }
 
-.tab-header > span.active{
+.tab-header li.selected{
   border-bottom: none;
 }
 
-.active{
+.selected{
   font-weight: bold;
 }
 
