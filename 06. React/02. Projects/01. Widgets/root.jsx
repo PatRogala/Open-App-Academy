@@ -1,10 +1,12 @@
 import React from "react";
 import Clock from "./frontend/clock.jsx";
 import Tabs from "./frontend/tabs.jsx";
+import Weather from "./frontend/weather.jsx";
 
 const Root = () =>  (
   <div>
     <Clock />
+    <Weather />
     <Tabs tabs={[
       {title: "Tab 1", content: "This is the first tab"},
       {title: "Tab 2", content: "This is the second tab"},

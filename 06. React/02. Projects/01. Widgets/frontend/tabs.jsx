@@ -14,8 +14,8 @@ class Tabs extends React.Component {
     return (
       <div>
         <h1>Tabs</h1>
-        <div class="tabs">
-          <div class="tab-header">
+        <div className="tabs">
+          <div className="tab-header">
             <ul>
               {tabs.map((tab, index) => (
                 <li key={index} className={index === selectedTab ? 'selected' : ''} onClick={() => this.setState({selectedTab: index})}>
