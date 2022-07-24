@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Game from './components/game';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    <Game />,
     document.getElementById('minesweeper')
   );
 });

@@ -1,4 +1,6 @@
-import * as Minesweeper from '../react_minesweeper.jsx';
+import * as Minesweeper from '../minesweeper.js';
+import Board from './board.jsx';
+import React from 'react';
 
 class Game extends React.Component {
   constructor(props) {
