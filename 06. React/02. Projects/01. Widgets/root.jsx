@@ -1,9 +1,9 @@
 import React from "react";
+import Clock from "./frontend/clock.jsx";
 
 const Root = () =>  (
   <div>
-    <h1>Root</h1>
-    <p>This is the root of the app</p>
+    <Clock />
   </div>
 );
 

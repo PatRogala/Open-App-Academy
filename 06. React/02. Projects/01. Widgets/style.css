@@ -1,0 +1,175 @@
+/* AutoComplete */
+
+.auto{
+  color: white;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  width: 191px;
+  height: 200px;
+  border: 2px solid black;
+  margin: 0 20px 20px 20px;
+  padding: 10px;
+  background-size: cover;
+  background-position: center;
+  background-color: violet;
+}
+
+.auto > *{
+  margin-left: 30px;
+}
+
+.auto > input{
+  margin: 10px 30px 0 30px;
+  border: 1px solid black;
+}
+
+.auto li{
+  cursor: pointer;
+  list-style-type: square;
+}
+
+.auto-enter {
+  opacity: 0.01;
+  transform: translateY(500%);
+}
+
+.auto-enter.auto-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 700ms ease-in, transform 700ms ease-in;
+}
+
+.auto-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.auto-leave.auto-leave-active {
+  opacity: 0.01;
+  transform: translateY(500%);
+  transition: opacity 700ms ease-in, transform 700ms ease-in;
+}
+
+/* Clock */
+
+.clock{
+  font-size: 28px;
+  color: white;
+  font-family: Orbitron;
+  width: 550px;
+  height: 94px;
+  border: 2px solid black;
+  margin: 0 20px 20px 20px;
+  padding: 10px;
+  background-color: orange;
+  background-size: cover;
+  background-position-y: 20%;
+}
+
+.clock p{
+  margin: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Weather */
+
+.weather{
+  font-size: 28px;
+  width: 550px;
+  height: 94px;
+  border: 2px solid black;
+  margin: 0 20px 20px 20px;
+  padding: 10px;
+  text-align: center;
+  background-color: lightgreen;
+  background-size: cover;
+  background-position-y: 20%;
+}
+
+.weather p{
+  margin: 8px;
+}
+
+.loading{
+  margin-top: 30px;
+}
+
+/* Tabs */
+
+.tab-header{
+  width: 200px;
+  height: 30px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-header > span{
+  width: 65px;
+  border-top: 2px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-top: 4px;
+  text-align: center;
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+.tab-header > span:first-child{
+  border-left: 2px solid black;
+}
+
+.tab-header > span:last-child{
+  border-right: 2px solid black;
+}
+
+.tab-header > span:hover{
+  background-color: black;
+  color: white;
+}
+
+.tab-header > span.active{
+  border-bottom: none;
+}
+
+.active{
+  font-weight: bold;
+}
+
+.tabs{
+  width: 240px;
+  height: 200px;
+}
+
+.tab-content{
+  font-weight: bold;
+  color: white;
+  height: 192px;
+  margin: 0 20px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  background-size: cover;
+}
+
+.tab-content p{
+  text-align: center;
+}
+
+body{
+  display: flex;
+  justify-content: space-around;
+}
+
+.interactive{
+  display: flex;
+  justify-content: space-around;
+}
